@@ -13,25 +13,25 @@ export default function Navbar(props){
             </div>
             <div className={classNames("navbar-items py-3 lg:py-0 flex flex-col lg:flex-row lg:flex",{"hidden": !navbarOpened})}>
 
-                <IconNavItem href="plasma" icon={["fas","shield-virus"]}>
+                <IconNavItem  href="plasma" icon={["fas","shield-virus"]} onClick={()=>{setNavbarOpened(false)}}>
                     Plasma
                 </IconNavItem>
-                <IconNavItem href="hospital" icon={["fas","hospital"]}>Hospitals</IconNavItem>
-                <IconNavItem href="medicine" icon={["fas","syringe"]}>Medicines</IconNavItem>
-                <IconNavItem href="oxygen" icon={["fas","lungs"]}>Oxygen</IconNavItem>
-                <IconNavItem href="helpline" icon={["fas","phone"]}>Helplines</IconNavItem>
+                <IconNavItem href="hospital" icon={["fas","hospital"]} onClick={()=>{setNavbarOpened(false)}}>Hospitals</IconNavItem>
+                <IconNavItem href="medicine" icon={["fas","syringe"]} onClick={()=>{setNavbarOpened(false)}}>Medicines</IconNavItem>
+                <IconNavItem href="oxygen" icon={["fas","lungs"]} onClick={()=>{setNavbarOpened(false)}}>Oxygen</IconNavItem>
+                <IconNavItem href="helpline" icon={["fas","phone"]} onClick={()=>{setNavbarOpened(false)}}>Helplines</IconNavItem>
                 <div className="border-t border-r"></div>                
 
-                <IconNavItem href="mail:contact@covidkashmir.org" icon={["fas","envelope"]}>Contact Us</IconNavItem>
+                <IconNavItem href="mail:contact@covidkashmir.org" icon={["fas","envelope"]} onClick={()=>{setNavbarOpened(false)}}>Contact Us</IconNavItem>
             </div>
         </nav>
     )
 }
 
-function IconNavItem({href,icon, children}) {
+function IconNavItem({href,icon,onClick, children}) {
     return (
         <Link href={href}>
-            <div className="navbar-item">
+            <div className="navbar-item" onClick={onClick}>
 
             <a> {icon&& <span><FontAwesomeIcon className="mr-2" icon={icon}/></span> }<span>{children}</span></a>
             </div>
