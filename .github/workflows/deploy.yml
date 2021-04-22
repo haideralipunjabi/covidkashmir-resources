@@ -17,7 +17,7 @@ jobs:
       - name: 'Build'
         env:
           API_URL: ${{ secrets.API_URL }}
-        run: npm run build  
+        run: npm run build && npm run export  
       - name: Deploy production to Netlify
         uses: South-Paw/action-netlify-deploy@v1.0.4
         with:
