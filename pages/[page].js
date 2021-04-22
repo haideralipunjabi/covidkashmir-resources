@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Grid from "../components/grid";
 import { fetchData, getPaths } from "../lib/lib";
+import Head from "next/head";
 
 export default function Page(props) {
   const router = useRouter();
