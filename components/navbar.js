@@ -18,7 +18,8 @@ export default function Navbar(props){
                 <IconNavItem href="hospital" icon={["fas","hospital"]}>Hospitals</IconNavItem>
                 <IconNavItem href="medicine" icon={["fas","syringe"]}>Medicines</IconNavItem>
                 <IconNavItem href="oxygen" icon={["fas","lungs"]}>Oxygen</IconNavItem>
-
+                <IconNavItem href="helpline" icon={["fas","phone"]}>Helplines</IconNavItem>
+                
             </div>
         </nav>
     )

@@ -20,14 +20,13 @@ export default function Card(props) {
       <div className="body">
         <p>{notes}</p>
         <div className="contacts">
-          {getNumbers(contact) &&
-            getNumbers(contact).map((number, idx) => {
+          {contact.split(",").map((number, idx) => {
               return (
                 <div
                   className="contact"
                   key={idx}
                 >
-                  <a className="icon" href={`tel:+${number}`}>
+                  <a className="icon" href={`tel:${number}`}>
                     <span>
                       <FontAwesomeIcon icon={["fas", "phone"]} />
                     </span>
