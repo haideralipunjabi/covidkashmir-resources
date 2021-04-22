@@ -28,17 +28,17 @@ export default function Grid(props) {
   };
   useEffect(() => {
     filterData();
-  }, [data]);
+  }, [data, searchText]);
 
-  useEffect(() => {
-    filterData();
-  }, []);
 
   return (
     <div className="card-grid-container">
       <div className="w-full my-10 text-center">
-        <h1 className="text-5xl mb-5">Resource: {type ? type[0].toUpperCase() + type.slice(1) : "All"}</h1>
+        <h1 className="text-5xl mb-5">
+          Resource: {type ? type[0].toUpperCase() + type.slice(1) : "All"}
+        </h1>
         <input
+          className="text-black"
           type="text"
           name="search"
           placeholder="Search..."
