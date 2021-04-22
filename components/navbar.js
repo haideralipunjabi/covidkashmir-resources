@@ -12,6 +12,7 @@ export default function Navbar(props){
                 <span className="text-2xl my-auto lg:hidden" onClick={()=>{setNavbarOpened(!navbarOpened)}}><FontAwesomeIcon icon={["fas",navbarOpened?"times":"bars"]}/></span>
             </div>
             <div className={classNames("navbar-items py-3 lg:py-0 flex flex-col lg:flex-row lg:flex",{"hidden": !navbarOpened})}>
+
                 <IconNavItem href="plasma" icon={["fas","shield-virus"]}>
                     Plasma
                 </IconNavItem>
@@ -19,7 +20,9 @@ export default function Navbar(props){
                 <IconNavItem href="medicine" icon={["fas","syringe"]}>Medicines</IconNavItem>
                 <IconNavItem href="oxygen" icon={["fas","lungs"]}>Oxygen</IconNavItem>
                 <IconNavItem href="helpline" icon={["fas","phone"]}>Helplines</IconNavItem>
-                
+                <div className="border-t border-r"></div>                
+
+                <IconNavItem href="mail:contact@covidkashmir.org" icon={["fas","envelope"]}>Contact Us</IconNavItem>
             </div>
         </nav>
     )
