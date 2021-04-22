@@ -4,8 +4,13 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  min-height: 100vh;
+    height: 100%;
+  @apply bg-primary;
 }
-
+#__next {
+  height: 100%;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -13,4 +18,56 @@ a {
 
 * {
   box-sizing: border-box;
+}
+nav {
+  @apply text-white px-5 w-full h-auto bg-secondary flex flex-col lg:flex-row lg:justify-between shadow-md
+}
+nav  a {
+  @apply text-white p-3  text-xl my-auto md:text-2xl
+}
+nav .navbar-item {
+  @apply hover:bg-primary flex;
+}
+.sourceLink {
+  word-break: break-all;
+}
+.card {
+  @apply bg-secondary w-11/12 sm:w-full h-full text-white rounded-md p-5 shadow-md mx-auto
+}
+.card .title {
+  @apply text-2xl
+}
+.card .subtitle {
+  @apply text-xl
+}
+
+.card .body {
+  @apply my-2 text-xl
+}
+
+.card .contacts {
+  @apply my-5 flex flex-row flex-wrap gap-4
+}
+.card .contacts .contact {
+  @apply bg-primary w-auto rounded-full p-2 shadow-sm hover:shadow-lg
+}
+.icon span {
+  @apply mx-2
+}
+
+.footer {
+  @apply w-full bg-secondary h-auto p-3 text-center text-xl md:text-2xl text-white
+}
+.footer a {
+  @apply underline
+}
+
+.card-grid-container {
+  @apply container mx-auto  py-10 flex flex-col justify-between mb-auto text-white
+}
+.card-grid-container input {
+  @apply border py-2 px-3 rounded-full w-11/12 text-xl md:text-2xl outline-none focus:shadow-2xl
+}
+.card-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4
 }

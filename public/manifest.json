@@ -1,0 +1,54 @@
+{
+    "short_name": "Resource Tracker",
+    "url": "resources.covidkashmir.org",
+    "description": "Resource Tracker is a website with latest contact information about multiple types of resources related to Covid-19. For e.g., Medicines, Hospitals, Plasma, Blood, Doctors, etc. It has been started as an initiatve by CovidKashmir.",
+    "background_color": "#1E3A8A",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/?utm_source=pwa",
+    "theme_color": "#1E40AF",
+    "name": "Resource Tracker | CovidKashmir",
+    "icons": [
+      {
+        "src": "/favicons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/favicons/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "oritentation":"any",
+    "categories":["utilities"],
+    "shortcuts": [
+      {
+        "name": "Plasma | Resource Tracker",
+        "shortname": "Plasma",
+        "description": "Opens the Plasma Resource Page",
+        "url": "/?utm_source=pwa_shortcut",
+        "icons": [{"src":"/favicons/android-chrome-192x192.png", "sizes":"192x192"}]
+      },
+      {
+        "name": "Hospitals | Resource Tracker",
+        "shortname": "Hospitals",
+        "description": "Opens the Hospitals Resource Page",
+        "url": "/?utm_source=pwa_shortcut",
+        "icons": [{"src":"/favicons/android-chrome-192x192.png", "sizes":"192x192"}]
+      },{
+        "name": "Medicines | Resource Tracker",
+        "shortname": "Medicines",
+        "description": "Opens the Medicines Resource Page",
+        "url": "/?utm_source=pwa_shortcut",
+        "icons": [{"src":"/favicons/android-chrome-192x192.png", "sizes":"192x192"}]
+      },{
+        "name": "Oxygen | Resource Tracker",
+        "shortname": "Oxygen",
+        "description": "Opens the Oxygen Resource Page",
+        "url": "/?utm_source=pwa_shortcut",
+        "icons": [{"src":"/favicons/android-chrome-192x192.png", "sizes":"192x192"}]
+      },
+    ]
+  }
