@@ -71,3 +71,28 @@ nav .navbar-item {
 .card-grid {
   @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4
 }
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-primary
+}
+::-webkit-scrollbar-track-piece {
+  @apply bg-primary
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  @apply bg-primary
+}
+::-webkit-scrollbar-thumb:window-inactive {
+ @apply bg-secondary;
+}
