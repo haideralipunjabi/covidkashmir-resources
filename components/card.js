@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { saveAs } from "file-saver";
 import domtoimage from "dom-to-image";
 
@@ -35,25 +35,35 @@ export default function Card(props) {
 
     domtoimage.toBlob(cardRef.current, param).then((blob) => {
       saveAs(blob, `${title}.png`);
+      setShowFooter(false);
     });
   };
+
+  useEffect(()=>{
+      if(showFooter) downloadCard();
+
+  }, [showFooter]);
   return (
     <div
       ref={cardRef}
       className="card relative"
-      onClick={() => {
-        downloadCard();
-      }}
+     
     >
       <span
         id="downloadButton"
         className="cursor-pointer absolute right-5 top-5 text-xl"
+        onClick={() => {
+          // downloadCard();
+          setShowFooter(true);
+        }}
       >
         <FontAwesomeIcon icon={["fas", "download"]} />
       </span>
+      <div>
       <p className="title mr-5">{title}</p>
       <p className="subtitle">{subtitle}</p>
       {showType && <div className="text-lg italic">{type}</div>}
+      </div>
       <div className="body">
         <p>{notes}</p>
         <div className="contacts">
@@ -82,6 +92,12 @@ export default function Card(props) {
           </a>
         </p>
       </div>
+      {
+      showFooter &&
+      <div className="mt-5 mb-10">
+        <p className="absolute bottom-2 left-0 right-0 text-center">resources.covidkashmir.org</p>
+      </div>
+      }
     </div>
   );
 }

@@ -32,7 +32,7 @@ nav .navbar-item {
   word-break: break-all;
 }
 .card {
-  @apply bg-secondary w-11/12 sm:w-full h-full text-white rounded-md p-5 shadow-md mx-auto
+  @apply bg-secondary w-11/12 sm:w-full h-full text-white rounded-md p-5 shadow-md mx-auto 
 }
 .card .title {
   @apply text-2xl
