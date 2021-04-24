@@ -71,7 +71,9 @@ nav .navbar-item {
 .card-grid {
   @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4
 }
-
+.card-grid-container button {
+  @apply border py-2 px-3 rounded-full text-xl md:text-2xl outline-none hover:shadow-lg disabled:opacity-50 disabled:cursor-default disabled:shadow-none
+}
 /* Let's get this party started */
 ::-webkit-scrollbar {
   width: 8px;

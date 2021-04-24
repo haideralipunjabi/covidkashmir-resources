@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 import Card from "../components/card";
 
@@ -5,7 +6,13 @@ export default function Grid(props) {
   const { data, type } = props;
   const [searchText, setSearchText] = useState();
   const [filteredData, setFilteredData] = useState(data);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 30
+  const changePage = (fact) => {
+      if(currentPage+fact >= 1 && currentPage+fact <= Math.ceil(filteredData.length/pageSize)) {
+        setCurrentPage(currentPage+fact)
+      }
+  }
   const filterData = () => {
     setFilteredData(
       data
@@ -46,10 +53,18 @@ export default function Grid(props) {
         />
       </div>
       <div className="card-grid">
-        {filteredData.map((item, key) => (
+        {filteredData.slice((currentPage-1)*pageSize, currentPage*pageSize).map((item, key) => (
           <Card key={key} showType={!type} {...item} />
         ))}
       </div>
+      {
+        filteredData.length > pageSize &&
+      <div className="flex justify-between mt-5">
+      <button disabled={currentPage===1} onClick={()=>{changePage(-1)}}>Prev</button>
+      <button disabled={currentPage===(Math.ceil(filteredData.length /pageSize))} onClick={()=>{changePage(1)}}>Next</button>
+
+      </div>
+      }
     </div>
   );
 }
