@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "rm -rf .next && next build && next start",
     "export": "next export",
     "deploy": "rm -rf .next && rm -rf out && next build && next export && netlify deploy --prod"
   },

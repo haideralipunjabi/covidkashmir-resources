@@ -20,6 +20,8 @@ export default function Navbar(props){
                 <IconNavItem href="medicine" icon={["fas","syringe"]} onClick={()=>{setNavbarOpened(false)}}>Medicines</IconNavItem>
                 <IconNavItem href="oxygen" icon={["fas","lungs"]} onClick={()=>{setNavbarOpened(false)}}>Oxygen</IconNavItem>
                 <IconNavItem href="helpline" icon={["fas","phone"]} onClick={()=>{setNavbarOpened(false)}}>Helplines</IconNavItem>
+                <IconNavItem href="doctor" icon={["fas","user-md"]} onClick={()=>{setNavbarOpened(false)}}>Doctors</IconNavItem>
+
                 <div className="border-t border-r"></div>                
 
                 <IconNavItem href="mail:contact@covidkashmir.org" icon={["fas","envelope"]} onClick={()=>{setNavbarOpened(false)}}>Contact Us</IconNavItem>
