@@ -77,7 +77,7 @@ export default function Card(props) {
                         isTwitter(c) ? <FontAwesomeIcon icon={["fab","twitter"]} /> : <FontAwesomeIcon icon={["fas", "globe-asia"]} />
                       }
                     </span>
-                    <span>{isTwitter(c)? c.replace("https://twitter.com/","") : c}</span>
+                    <span>{isTwitter(c)? c.replace("https://twitter.com/","") : c.replace('https://','').replace('http://','')}</span>
                   </a>
                 )}
                 {

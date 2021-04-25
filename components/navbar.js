@@ -21,6 +21,7 @@ export default function Navbar(props){
                 <IconNavItem href="oxygen" icon={["fas","lungs"]} onClick={()=>{setNavbarOpened(false)}}>Oxygen</IconNavItem>
                 <IconNavItem href="helpline" icon={["fas","phone"]} onClick={()=>{setNavbarOpened(false)}}>Helplines</IconNavItem>
                 <IconNavItem href="doctor" icon={["fas","user-md"]} onClick={()=>{setNavbarOpened(false)}}>Doctors</IconNavItem>
+                <IconNavItem href="meal" icon={["fas","utensils"]} onClick={()=>{setNavbarOpened(false)}}>Meals</IconNavItem>
 
                 <div className="border-t border-r"></div>                
 
