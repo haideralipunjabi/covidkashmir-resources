@@ -8,6 +8,8 @@ export const getNumber = (text) => {
 }
 export const getNumbers = (text) =>text.split(",").map(t=>getNumber(t))
 
+export const isURL = (text) => text.startsWith("http://") || text.startsWith("https://")
+export const isTwitter = (text) => text.startsWith("https://twitter.com")
 export const CSVToArray = (strData,strDelimiter) => {
     strDelimiter = strDelimiter || ",";
     let objPattern = new RegExp(

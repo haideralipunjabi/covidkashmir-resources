@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { saveAs } from "file-saver";
 import domtoimage from "dom-to-image";
+import { isTwitter, isURL } from "../utils/utils";
 
 export default function Card(props) {
   const {
@@ -16,7 +17,7 @@ export default function Card(props) {
     showType,
   } = props;
   const cardRef = useRef();
-  const [showFooter,setShowFooter] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
   const downloadCard = async () => {
     const scale = 3;
     const style = {
@@ -39,16 +40,11 @@ export default function Card(props) {
     });
   };
 
-  useEffect(()=>{
-      if(showFooter) downloadCard();
-
+  useEffect(() => {
+    if (showFooter) downloadCard();
   }, [showFooter]);
   return (
-    <div
-      ref={cardRef}
-      className="card relative"
-     
-    >
+    <div ref={cardRef} className="card relative">
       <span
         id="downloadButton"
         className="cursor-pointer absolute right-5 top-5 text-xl"
@@ -60,22 +56,39 @@ export default function Card(props) {
         <FontAwesomeIcon icon={["fas", "download"]} />
       </span>
       <div>
-      <p className="title mr-5">{title}</p>
-      <p className="subtitle">{subtitle}</p>
-      {showType && <div className="text-lg italic">{type}</div>}
+        <p className="title mr-5">{title}</p>
+        <p className="subtitle">{subtitle}</p>
+        {showType && <div className="text-lg italic">{type}</div>}
       </div>
       <div className="body">
         <p>{notes}</p>
         <div className="contacts">
-          {contact.split(",").map((number, idx) => {
+          {contact.replace(/\s/,'').split(",").map((c, idx) => {
             return (
               <div className="contact" key={idx}>
-                <a className="icon" href={`tel:${number}`}>
-                  <span>
-                    <FontAwesomeIcon icon={["fas", "phone"]} />
-                  </span>
-                  <span>{number}</span>
-                </a>
+                {isURL(c) && (
+                  <a
+                    className="icon"
+                    href={c}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>
+                      {
+                        isTwitter(c) ? <FontAwesomeIcon icon={["fab","twitter"]} /> : <FontAwesomeIcon icon={["fas", "globe-asia"]} />
+                      }
+                    </span>
+                    <span>{isTwitter(c)? c.replace("https://twitter.com/","") : c}</span>
+                  </a>
+                )}
+                {!isURL(c) && (
+                  <a className="icon" href={`tel:${c}`}>
+                    <span>
+                      <FontAwesomeIcon icon={["fas", "phone"]} />
+                    </span>
+                    <span>{c}</span>
+                  </a>
+                )}
               </div>
             );
           })}
@@ -92,12 +105,13 @@ export default function Card(props) {
           </a>
         </p>
       </div>
-      {
-      showFooter &&
-      <div className="mt-5 mb-10">
-        <p className="absolute bottom-2 left-0 right-0 text-center">resources.covidkashmir.org</p>
-      </div>
-      }
+      {showFooter && (
+        <div className="mt-5 mb-10">
+          <p className="absolute bottom-2 left-0 right-0 text-center">
+            resources.covidkashmir.org
+          </p>
+        </div>
+      )}
     </div>
   );
 }
