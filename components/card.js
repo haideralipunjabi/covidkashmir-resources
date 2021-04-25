@@ -39,7 +39,6 @@ export default function Card(props) {
       setShowFooter(false);
     });
   };
-
   useEffect(() => {
     if (showFooter) downloadCard();
   }, [showFooter]);
@@ -81,7 +80,17 @@ export default function Card(props) {
                     <span>{isTwitter(c)? c.replace("https://twitter.com/","") : c}</span>
                   </a>
                 )}
-                {!isURL(c) && (
+                {
+                 !isURL(c) && c.startsWith('wa-') && (
+                   <a href={`https://wa.me/${c.replace('wa-','')}`} className="icon">
+                     <span>
+                       <FontAwesomeIcon icon={["fab","whatsapp"]}/>
+                     </span>
+                     <span>{c.replace('wa-91','')}</span>
+                   </a>
+                 )
+                }
+                {!isURL(c) && !c.startsWith('wa-') && (
                   <a className="icon" href={`tel:${c}`}>
                     <span>
                       <FontAwesomeIcon icon={["fas", "phone"]} />
