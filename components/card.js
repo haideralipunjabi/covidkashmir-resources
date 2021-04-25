@@ -61,7 +61,7 @@ export default function Card(props) {
         {showType && <div className="text-lg italic">{type}</div>}
       </div>
       <div className="body">
-        <p>{notes}</p>
+      {notes.split("\\n").map(note=><p>{note}</p>)}
         <div className="contacts">
           {contact.replace(/\s/,'').split(",").map((c, idx) => {
             return (
