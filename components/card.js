@@ -62,7 +62,7 @@ export default function Card(props) {
       <div className="body">
       {notes.split("\\n").map(note=><p>{note}</p>)}
         <div className="contacts">
-          {contact.replace(/\s/,'').split(",").map((c, idx) => {
+          {contact.replace(/\s/,'').replace(" ",'').split(",").map((c, idx) => {
             return (
               <div className="contact" key={idx}>
                 {isURL(c) && (
