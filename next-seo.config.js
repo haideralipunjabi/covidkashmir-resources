@@ -12,7 +12,6 @@ export default {
       title: config.title,
       description: config.description,
       type: 'website',
-      url: config.url,
       site_name: config.title,
       images: [
         {
