@@ -20,14 +20,16 @@ export default function Tiles(){
                     TILES.map((tile,key)=>{
                         if(tile.link.startsWith("http")) {
                             return (
-                                <a href={tile.link} target="_blank" rel="noopener noreferrer">
+                                <a href={tile.link} key={key} target="_blank" rel="noopener noreferrer">
                                 <Tile tile={tile}/>
                                 </a>
                             )
                         }
                         return (
                             <Link href={tile.link} key={key}>
+                                <a>
                                 <Tile tile={tile}/>
+                                </a>
                             </Link>
                         )
                     })
@@ -40,8 +42,8 @@ export default function Tiles(){
 function Tile({tile}) {
     return (
         <div className="tile">
-                                <span className="icon"><FontAwesomeIcon icon={tile.icon}/></span>
-                                <span className="title">{tile.title}</span>
-                            </div>
+                <span className="icon"><FontAwesomeIcon icon={tile.icon}/></span>
+                <span className="title">{tile.title}</span>
+        </div>
     )
 }
