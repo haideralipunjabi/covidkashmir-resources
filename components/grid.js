@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import Card from "../components/card";
@@ -38,8 +39,10 @@ export default function Grid(props) {
     filterData();
   }, [data, searchText]);
 useEffect(()=>{
-  setSearchText(searchQuery)
-  searchInput.current.value = searchQuery;
+  if(searchQuery) {
+    setSearchText(searchQuery)
+    searchInput.current.value = searchQuery;
+  }
 },[searchQuery])
 
   return (
@@ -52,10 +55,13 @@ useEffect(()=>{
           className="text-black"
           type="text"
           name="search"
-          placeholder="Search..."
+          placeholder="Search by Location, Requirement, Provider, etc"
           onChange={onSearchChange}
           ref={searchInput}
         />
+        {/* <span>
+          <FontAwesomeIcon icon={["fas","share-alt"]} />
+        </span> */}
       </div>
       <div className="card-grid">
         {filteredData.slice((currentPage-1)*pageSize, currentPage*pageSize).map((item, key) => (
