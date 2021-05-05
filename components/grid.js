@@ -8,13 +8,16 @@ export default function Grid(props) {
   const [searchText, setSearchText] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 30
+  const pageSize = 30;
   const searchInput = useRef();
   const changePage = (fact) => {
-      if(currentPage+fact >= 1 && currentPage+fact <= Math.ceil(filteredData.length/pageSize)) {
-        setCurrentPage(currentPage+fact)
-      }
-  }
+    if (
+      currentPage + fact >= 1 &&
+      currentPage + fact <= Math.ceil(filteredData.length / pageSize)
+    ) {
+      setCurrentPage(currentPage + fact);
+    }
+  };
   const filterData = () => {
     setFilteredData(
       data
@@ -30,6 +33,29 @@ export default function Grid(props) {
             ).length > 0
           );
         })
+        .filter((item) => {
+          if (!item.days) return true;
+          console.log(item.days
+            .split(",")
+            .some(
+              (day) =>
+                day.trim().toLowerCase() ===
+                new Date()
+                  .toLocaleDateString("en", { weekday: "long" })
+                  .toLowerCase()
+            ))
+          return (
+            item.days
+              .split(",")
+              .some(
+                (day) =>
+                  day.trim().toLowerCase() ===
+                  new Date()
+                    .toLocaleDateString("en", { weekday: "long" })
+                    .toLowerCase()
+              )
+          );
+        })
     );
   };
   const onSearchChange = (e) => {
@@ -38,12 +64,12 @@ export default function Grid(props) {
   useEffect(() => {
     filterData();
   }, [data, searchText]);
-useEffect(()=>{
-  if(searchQuery) {
-    setSearchText(searchQuery)
-    searchInput.current.value = searchQuery;
-  }
-},[searchQuery])
+  useEffect(() => {
+    if (searchQuery) {
+      setSearchText(searchQuery);
+      searchInput.current.value = searchQuery;
+    }
+  }, [searchQuery]);
 
   return (
     <div className="card-grid-container">
@@ -64,18 +90,32 @@ useEffect(()=>{
         </span> */}
       </div>
       <div className="card-grid">
-        {filteredData.slice((currentPage-1)*pageSize, currentPage*pageSize).map((item, key) => (
-          <Card key={key} showType={!type} {...item} />
-        ))}
+        {filteredData
+          .slice((currentPage - 1) * pageSize, currentPage * pageSize)
+          .map((item, key) => (
+            <Card key={key} showType={!type} {...item} />
+          ))}
       </div>
-      {
-        filteredData.length > pageSize &&
-      <div className="flex justify-between mt-5">
-      <button disabled={currentPage===1} onClick={()=>{changePage(-1)}}>Prev</button>
-      <button disabled={currentPage===(Math.ceil(filteredData.length /pageSize))} onClick={()=>{changePage(1)}}>Next</button>
-
-      </div>
-      }
+      {filteredData.length > pageSize && (
+        <div className="flex justify-between mt-5">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => {
+              changePage(-1);
+            }}
+          >
+            Prev
+          </button>
+          <button
+            disabled={currentPage === Math.ceil(filteredData.length / pageSize)}
+            onClick={() => {
+              changePage(1);
+            }}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 }
