@@ -1,9 +1,13 @@
 import Grid from "../components/grid";
+import Tiles from "../components/tiles";
 import { fetchData } from "../lib/lib";
 export default function Home(props) {
   const { data }= props;
   return (
+    <>
+      <Tiles/>
       <Grid data={data}/>
+    </>
   );
 }
 

@@ -13,7 +13,7 @@ export default function Navbar(props){
             </div>
             <div className={classNames("navbar-items py-3 lg:py-0 flex flex-col lg:flex-row lg:flex",{"hidden": !navbarOpened})}>
 
-                <IconNavItem  href="plasma" icon={["fas","shield-virus"]} onClick={()=>{setNavbarOpened(false)}}>
+                {/* <IconNavItem  href="plasma" icon={["fas","shield-virus"]} onClick={()=>{setNavbarOpened(false)}}>
                     Plasma
                 </IconNavItem>
                 <IconNavItem href="hospital" icon={["fas","hospital"]} onClick={()=>{setNavbarOpened(false)}}>Hospitals</IconNavItem>
@@ -23,21 +23,18 @@ export default function Navbar(props){
                 <IconNavItem href="doctor" icon={["fas","user-md"]} onClick={()=>{setNavbarOpened(false)}}>Doctors</IconNavItem>
                 <IconNavItem href="meal" icon={["fas","utensils"]} onClick={()=>{setNavbarOpened(false)}}>Meals</IconNavItem>
 
-                <div className="border-t border-r"></div>                
-
-                <IconNavItem href="mail:contact@covidkashmir.org" icon={["fas","envelope"]} onClick={()=>{setNavbarOpened(false)}}>Contact Us</IconNavItem>
+                <div className="border-t border-r"></div>                 */}
+                <div className="navbar-item" onClick={()=>{setNavbarOpened(false)}}>
+                    <a href="mailto:contact@covidkashmir.org">
+                        <span>
+                            <FontAwesomeIcon className="mr-2" icon={["fas","envelope"]}/>
+                        </span>
+                        <span>
+                            Contact Us
+                        </span>
+                    </a>
+                </div>
             </div>
         </nav>
-    )
-}
-
-function IconNavItem({href,icon,onClick, children}) {
-    return (
-        <Link href={href}>
-            <div className="navbar-item" onClick={onClick}>
-
-            <a> {icon&& <span><FontAwesomeIcon className="mr-2" icon={icon}/></span> }<span>{children}</span></a>
-            </div>
-        </Link>
     )
 }
