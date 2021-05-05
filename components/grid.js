@@ -1,13 +1,14 @@
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Card from "../components/card";
 
 export default function Grid(props) {
-  const { data, type } = props;
+  const { data, type, searchQuery } = props;
   const [searchText, setSearchText] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 30
+  const searchInput = useRef();
   const changePage = (fact) => {
       if(currentPage+fact >= 1 && currentPage+fact <= Math.ceil(filteredData.length/pageSize)) {
         setCurrentPage(currentPage+fact)
@@ -36,7 +37,10 @@ export default function Grid(props) {
   useEffect(() => {
     filterData();
   }, [data, searchText]);
-
+useEffect(()=>{
+  setSearchText(searchQuery)
+  searchInput.current.value = searchQuery;
+},[searchQuery])
 
   return (
     <div className="card-grid-container">
@@ -50,6 +54,7 @@ export default function Grid(props) {
           name="search"
           placeholder="Search..."
           onChange={onSearchChange}
+          ref={searchInput}
         />
       </div>
       <div className="card-grid">
