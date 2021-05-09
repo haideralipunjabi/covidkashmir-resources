@@ -60,59 +60,74 @@ export default function Card(props) {
         {showType && <div className="text-lg italic">{type}</div>}
       </div>
       <div className="body">
-      {notes.split("\\n").map(note=><p>{note}</p>)}
+        {notes.split("\\n").map((note) => (
+          <p>{note}</p>
+        ))}
         <div className="contacts">
-          {contact.replace(/\s/,'').replace(" ",'').split(",").map((c, idx) => {
-            return (
-              <div className="contact" key={idx}>
-                {isURL(c) && (
-                  <a
-                    className="icon"
-                    href={c}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>
-                      {
-                        isTwitter(c) ? <FontAwesomeIcon icon={["fab","twitter"]} /> : <FontAwesomeIcon icon={["fas", "globe-asia"]} />
-                      }
-                    </span>
-                    <span>{isTwitter(c)? c.replace("https://twitter.com/","") : c.replace('https://','').replace('http://','')}</span>
-                  </a>
-                )}
-                {
-                 !isURL(c) && c.startsWith('wa-') && (
-                   <a href={`https://wa.me/${c.replace('wa-','')}`} className="icon">
-                     <span>
-                       <FontAwesomeIcon icon={["fab","whatsapp"]}/>
-                     </span>
-                     <span>{c.replace('wa-91','')}</span>
-                   </a>
-                 )
-                }
-                {!isURL(c) && !c.startsWith('wa-') && (
-                  <a className="icon" href={`tel:${c}`}>
-                    <span>
-                      <FontAwesomeIcon icon={["fas", "phone"]} />
-                    </span>
-                    <span>{c}</span>
-                  </a>
-                )}
-              </div>
-            );
-          })}
+          {contact
+            .replace(/\s/, "")
+            .replace(" ", "")
+            .split(",")
+            .map((c, idx) => {
+              return (
+                <div className="contact" key={idx}>
+                  {isURL(c) && (
+                    <a
+                      className="icon"
+                      href={c}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>
+                        {isTwitter(c) ? (
+                          <FontAwesomeIcon icon={["fab", "twitter"]} />
+                        ) : (
+                          <FontAwesomeIcon icon={["fas", "globe-asia"]} />
+                        )}
+                      </span>
+                      <span>
+                        {isTwitter(c)
+                          ? c.replace("https://twitter.com/", "")
+                          : c.replace("https://", "").replace("http://", "")}
+                      </span>
+                    </a>
+                  )}
+                  {!isURL(c) && c.startsWith("wa-") && (
+                    <a
+                      href={`https://wa.me/${c.replace("wa-", "")}`}
+                      className="icon"
+                    >
+                      <span>
+                        <FontAwesomeIcon icon={["fab", "whatsapp"]} />
+                      </span>
+                      <span>{c.replace("wa-91", "")}</span>
+                    </a>
+                  )}
+                  {!isURL(c) && !c.startsWith("wa-") && (
+                    <a className="icon" href={`tel:${c}`}>
+                      <span>
+                        <FontAwesomeIcon icon={["fas", "phone"]} />
+                      </span>
+                      <span>{c}</span>
+                    </a>
+                  )}
+                </div>
+              );
+            })}
         </div>
-        <p>
-          Source:{" "}
-          <a
-            className="sourceLink italic"
-            href={sourcelink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {sourcetitle || sourcelink}
-          </a>
-        </p>
+        {(sourcetitle || sourcelink) && (
+          <p>
+            Source:{" "}
+            <a
+              className="sourceLink italic"
+              href={sourcelink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {sourcetitle || sourcelink}
+            </a>
+          </p>
+        )}
       </div>
       {showFooter && (
         <div className="mt-5 mb-10">
